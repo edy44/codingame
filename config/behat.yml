@@ -1,0 +1,8 @@
+# behat.yml
+default:
+  autoload:
+    '': '../codingame'
+  suites:
+   chuck_norris_features:
+      paths: [ ./tests/Functional/features ]
+      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\ChuckNorrisContext ]

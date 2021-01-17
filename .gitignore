@@ -1,0 +1,28 @@
+/.idea
+/var/*
+!/var/.gitignore
+
+###> composer ###
+/vendor
+###< composer ###
+
+###> symfony ###
+.env.local
+.env.test.local
+###< symfony ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###

@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  php:
+    build:
+      context: php
+      args:
+        USER_ID: ${USER_ID}
+        GROUP_ID: ${GROUP_ID}
+    container_name: codingame_php
+    working_dir: /home/star/codingame
+    ports:
+      - "9000:80"
+    volumes:
+      - ${PATH_DOMAIN}:/home/star/codingame
+    environment:
+      PHP_IDE_CONFIG: "serverName=test-app"
