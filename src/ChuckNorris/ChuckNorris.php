@@ -14,32 +14,31 @@ class ChuckNorris
      */
     public function convertStringToChuckNorris(string $message): string
     {
-        $words = explode(' ', $message);
-        $results = [];
+        $binaryString = $this->convertStringToBinary($message);
+        $explode = $this->explodeBinaryData($binaryString);
 
-        foreach ($words as $word) {
-            $binaryString = $this->convertStringToBinary($word);
-
-            $explode = $this->explode($binaryString);
-
-            $results[] = $this->encodeWithChuckNorrisStyle($explode);
-        }
-
-        return implode(' ', $results);
+        return $this->encodeWithChuckNorrisRules($explode);
     }
 
     /**
-     * @param string $message
+     * @param string $word
      * @return string
      */
-    private function convertStringToBinary(string $message): string
+    private function convertStringToBinary(string $word): string
     {
-        $characters = str_split($message);
+        $characters = str_split($word);
 
         $binary = [];
         foreach ($characters as $character) {
             $data = unpack('H*', $character);
-            $binary[] = base_convert($data[1], 16, 2);
+            $convertToBinary = base_convert($data[1], 16, 2);
+            $length = strlen($convertToBinary);
+            $prefix = '';
+            while ($length < 7) {
+                $prefix .= '0';
+                $length++;
+            }
+            $binary[] = $prefix . $convertToBinary;
         }
 
         return implode('', $binary);
@@ -49,66 +48,57 @@ class ChuckNorris
      * @param string $binaryData
      * @return array[]
      */
-    private function explode(string $binaryData): array
+    private function explodeBinaryData(string $binaryData): array
     {
-        $lengths = [];
-        $values = [];
-
+        $results = [];
+        $key = 0;
         $position = 0;
 
         while ($position < strlen($binaryData)) {
             $length = 1;
 
-            if (!isset($binaryData[$position+1])) {
-                break;
-            }
-
-            while ($binaryData[$position] === $binaryData[$position+1]) {
+            while (isset($binaryData[$position+1]) && $binaryData[$position] === $binaryData[$position+1]) {
                 $length++;
                 $position++;
-
-                if (!isset($binaryData[$position+1])) {
-                    break;
-                }
             }
 
-            $lengths[] = $length;
-            $values[] =  $binaryData[$position];
+            $results[$key]['length'] = $length;
+            $results[$key]['value'] = $binaryData[$position];
+            $key++;
 
             $position++;
         }
 
-        return [
-            'lengths' => $lengths,
-            'values' => $values
-        ];
+        return $results;
     }
 
     /**
-     * @param array $data
+     * @param array $results
      * @return string
      */
-    private function encodeWithChuckNorrisStyle(array $data): string
+    private function encodeWithChuckNorrisRules(array $results): string
     {
-        $result = '';
+        $code = '';
 
-        foreach ($data['values'] as $index => $value) {
+        foreach ($results as $result) {
+            $value = $result['value'];
+            $count = $result['length'];
+
             if ($value === '0') {
-                $result .= '00 ';
+                $code .= '00 ';
             }
             if ($value === '1') {
-                $result .= '0 ';
+                $code .= '0 ';
             }
 
-            $count = $data['lengths'][$index];
             while ($count !== 0) {
-                $result .= '0';
+                $code .= '0';
                 $count--;
             }
 
-            $result .= ' ';
+            $code .= ' ';
         }
 
-        return trim($result);
+        return trim($code);
     }
 }
