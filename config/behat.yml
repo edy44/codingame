@@ -10,3 +10,7 @@ default:
    power_of_thor_feature:
      paths: [ ./tests/Functional/features/power_of_thor.feature ]
      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\PowerOfThorContext ]
+
+   art_ascii_feature:
+     paths: [ ./tests/Functional/features/art_ascii.feature ]
+     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\ArtASCIIContext ]
