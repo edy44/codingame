@@ -1,6 +1,6 @@
 <?php
 
-namespace CodinGame\Defibrillator;
+namespace CodinGame\Easy\Defibrillator;
 
 /**
  * Class Defibrillator

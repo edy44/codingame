@@ -1,6 +1,6 @@
 <?php
 
-namespace CodinGame\ArtASCII;
+namespace CodinGame\Easy\ArtASCII;
 
 /**
  * Class ArtASCII

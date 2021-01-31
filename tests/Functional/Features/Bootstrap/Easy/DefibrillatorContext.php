@@ -1,10 +1,9 @@
 <?php
 
-namespace CodinGame\Tests\Functional\Features\Bootstrap;
+namespace CodinGame\Tests\Functional\Features\Bootstrap\Easy;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
-use CodinGame\Defibrillator\Defibrillator;
+use CodinGame\Easy\Defibrillator\Defibrillator;
 use PHPUnit\Framework\Assert;
 
 /**

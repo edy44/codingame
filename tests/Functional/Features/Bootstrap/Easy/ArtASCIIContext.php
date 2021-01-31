@@ -1,9 +1,9 @@
 <?php
 
-namespace CodinGame\Tests\Functional\Features\Bootstrap;
+namespace CodinGame\Tests\Functional\Features\Bootstrap\Easy;
 
 use Behat\Behat\Context\Context;
-use CodinGame\ArtASCII\ArtASCII;
+use CodinGame\Easy\ArtASCII\ArtASCII;
 use PHPUnit\Framework\Assert;
 
 /**

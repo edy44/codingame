@@ -1,6 +1,6 @@
 <?php
 
-namespace CodinGame\ChuckNorris;
+namespace CodinGame\Easy\ChuckNorris;
 
 /**
  * Class ChuckNorris

@@ -1,9 +1,9 @@
 <?php
 
-namespace CodinGame\Tests\Functional\Features\Bootstrap;
+namespace CodinGame\Tests\Functional\Features\Bootstrap\Easy;
 
 use Behat\Behat\Context\Context;
-use CodinGame\ChuckNorris\ChuckNorris;
+use CodinGame\Easy\ChuckNorris\ChuckNorris;
 use PHPUnit\Framework\Assert;
 
 /**

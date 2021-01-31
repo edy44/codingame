@@ -1,6 +1,6 @@
 <?php
 
-namespace CodinGame\PowerOfThor;
+namespace CodinGame\Easy\PowerOfThor;
 
 /**
  * Class PowerOfThor

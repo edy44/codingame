@@ -29,8 +29,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "CodinGame\\Tests\\": "tests/",
-            "CodinGame\\Tests\\Functional\\Features\\Bootstrap\\": "tests/Functional/features/bootstrap/"
+            "CodinGame\\Tests\\": "tests/"
         }
     },
     "config": {
