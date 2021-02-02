@@ -3,7 +3,6 @@
 namespace CodinGame\Tests\Functional\Features\Bootstrap\Medium;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
 use CodinGame\Medium\War\War;
 use PHPUnit\Framework\Assert;
 
