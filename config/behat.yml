@@ -26,3 +26,7 @@ default:
    phone_numbers_feature:
      paths: [ ./tests/Functional/Features/Medium/phone_numbers.feature ]
      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\PhoneNumbersContext ]
+
+   scrabble_feature:
+     paths: [ ./tests/Functional/Features/Medium/scrabble.feature ]
+     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\ScrabbleContext ]
