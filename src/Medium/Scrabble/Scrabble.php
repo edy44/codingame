@@ -46,7 +46,7 @@ class Scrabble
 
         foreach ($this->dictionary as $word) {
             $word = str_split($word);
-            if($this->hasMatched($letters, $word)) {
+            if ($this->hasMatched($letters, $word)) {
                 $score = $this->findWordScore($word);
                 $this->addToResults($word, $score);
             }
@@ -85,7 +85,7 @@ class Scrabble
      */
     private function findWordScore(array $word): int
     {
-        $scores = array_map(function($character){
+        $scores = array_map(function ($character) {
             return self::POINTS[$character];
         }, $word);
         return array_sum($scores);
