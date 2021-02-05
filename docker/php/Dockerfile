@@ -5,6 +5,9 @@ FROM php:8.0-fpm
 RUN apt-get update \
     && apt-get install -y --no-install-recommends rpm zip vim locales apt-utils git libzip-dev libicu-dev g++ libpng-dev;
 
+# CHangement du password du user root
+RUN echo 'root:root' | chpasswd
+
 # Creation du user star
 ARG USER_ID
 ARG GROUP_ID
@@ -22,17 +25,8 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     echo "fr_FR.UTF-8 UTF-8" >> /etc/locale.gen && \
     locale-gen
 
-# On copie le php.ini du repertoire actuel dans le contenaire
-COPY php.ini /usr/local/etc/php/php.ini
-
 # Xdebug
-RUN pecl install xdebug-3.0.1 && docker-php-ext-enable xdebug \
-#    && echo "xdebug.client_port=9001" >> /usr/local/etc/php/conf.d/xdebug.ini \
-#    && echo "xdebug.client_host=localhost" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.mode=coverage" >> /usr/local/etc/php/conf.d/xdebug.ini
-#    && echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/xdebug.ini \
-#    && echo "xdebug.discover_client_host=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-#    && echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/conf.d/xdebug.ini
+RUN pecl install xdebug-3.0.1 && docker-php-ext-enable xdebug
 
 # on télécharge et deplace le composer
 RUN curl -sSk https://getcomposer.org/installer | php -- --disable-tls && \
