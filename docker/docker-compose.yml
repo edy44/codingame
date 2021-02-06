@@ -5,12 +5,15 @@ services:
     build:
       context: php
       args:
+        PATH_DOCKER: ${PATH_DOCKER}
+        ROOT_PASSWORD: ${ROOT_PASSWORD}
+        USER_NAME: ${USER_NAME}
         USER_ID: ${USER_ID}
         GROUP_ID: ${GROUP_ID}
     container_name: codingame_php
-    working_dir: /home/star/codingame
+    working_dir: ${PATH_DOCKER}
     user: ${USER_ID}
     volumes:
-      - ${PATH_DOMAIN}:/home/star/codingame
+      - ${PATH_LOCAL}:${PATH_DOCKER}
     environment:
       PHP_IDE_CONFIG: "serverName=test-app"

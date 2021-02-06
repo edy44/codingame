@@ -6,19 +6,22 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends rpm zip vim locales apt-utils git libzip-dev libicu-dev g++ libpng-dev;
 
 # CHangement du password du user root
-RUN echo 'root:root' | chpasswd
+ARG ROOT_PASSWORD
+RUN echo 'root:${ROOT_PASSWORD}' | chpasswd
 
 # Creation du user star
+ARG USER_NAME
 ARG USER_ID
 ARG GROUP_ID
-RUN groupadd -g ${GROUP_ID} star
-RUN useradd -s /bin/bash -u ${USER_ID} -g ${GROUP_ID} star
-RUN mkdir /home/star
-RUN chown -h star:star /home/star
+RUN groupadd -g ${GROUP_ID} ${USER_NAME}
+RUN useradd -s /bin/bash -u ${USER_ID} -g ${GROUP_ID} ${USER_NAME}
+RUN mkdir /home/${USER_NAME}
+RUN chown -h ${USER_NAME}:${USER_NAME} /home/${USER_NAME}
 
-RUN mkdir /home/star/codingame
-RUN mkdir /home/star/codingame/var
-RUN chmod 0777 -R /home/star/codingame/var
+ARG PATH_DOCKER
+RUN mkdir ${PATH_DOCKER}
+RUN mkdir ${PATH_DOCKER}/var
+RUN chmod 0777 -R ${PATH_DOCKER}/var
 
 # les locales, toujours utiles
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
