@@ -40,3 +40,7 @@ default:
    there_is_no_spoon_feature:
      paths: [ ./tests/Functional/Features/Medium/there_is_no_spoon.feature ]
      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\ThereIsNoSpoonContext ]
+
+   gift_feature:
+     paths: [ ./tests/Functional/Features/Medium/gift.feature ]
+     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\GiftContext ]
