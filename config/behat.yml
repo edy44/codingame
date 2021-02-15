@@ -44,3 +44,7 @@ default:
    gift_feature:
      paths: [ ./tests/Functional/Features/Medium/gift.feature ]
      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\GiftContext ]
+
+   stock_exchange_losses_feature:
+     paths: [ ./tests/Functional/Features/Medium/stock_exchange_losses.feature ]
+     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\StockExchangeLossesContext ]

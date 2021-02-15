@@ -71,7 +71,7 @@ class Gift
      */
     private function averageAmounts(int $amount, array $donations): void
     {
-        while($amount > 0) {
+        while ($amount > 0) {
             $count = count($donations);
             $minAmount  = min($donations);
             $average = floor($amount / $count);
