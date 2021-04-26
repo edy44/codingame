@@ -29,7 +29,9 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen
 
 # Xdebug
-RUN pecl install xdebug-3.0.1 && docker-php-ext-enable xdebug
+RUN pecl install xdebug-3.0.1 && docker-php-ext-enable xdebug \
+    && echo "xdebug.mode=coverage" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 # on télécharge et deplace le composer
 RUN curl -sSk https://getcomposer.org/installer | php -- --disable-tls && \
@@ -37,5 +39,5 @@ RUN curl -sSk https://getcomposer.org/installer | php -- --disable-tls && \
 
 # Quelques extesnions de php utiles
 RUN docker-php-ext-configure intl
-RUN docker-php-ext-install pdo mysqli pdo_mysql gd opcache intl zip calendar
+RUN docker-php-ext-install gd opcache intl zip calendar
 RUN pecl install apcu-5.1.18 && docker-php-ext-enable apcu

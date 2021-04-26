@@ -10,6 +10,7 @@ services:
         USER_NAME: ${USER_NAME}
         USER_ID: ${USER_ID}
         GROUP_ID: ${GROUP_ID}
+    env_file: .env
     container_name: codingame_php
     working_dir: ${PATH_DOCKER}
     user: ${USER_ID}
