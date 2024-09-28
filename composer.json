@@ -7,7 +7,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^8.0",
+        "php": ">=8.3",
         "symfony/flex": "^1.11",
         "symfony/http-kernel": "^7.1",
         "symfony/config": "^7.1",
@@ -44,5 +44,10 @@
         },
         "check-style": "deploy/scripts/checkStyle.sh",
         "test": "deploy/scripts/runAllTests.sh"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": true
+        }
     }
 }
