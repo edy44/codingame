@@ -8,17 +8,16 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.3",
-        "symfony/flex": "^1.11",
-        "symfony/http-kernel": "^7.1",
+        "psr/log": "^3.0",
         "symfony/config": "^7.1",
         "symfony/dependency-injection": "^7.1",
-        "psr/log": "^1.1"
+        "symfony/http-kernel": "^7.1"
     },
     "require-dev": {
         "behat/behat": "^3.14",
         "phpunit/phpunit": "^11.3",
         "rregeer/phpunit-coverage-check": "^0.3.1",
-        "squizlabs/php_codesniffer": "^3.7",
+        "squizlabs/php_codesniffer": "^3.10",
         "symfony/dotenv": "^7.1",
         "symfony/phpunit-bridge": "^7.1"
     },
