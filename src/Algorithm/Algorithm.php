@@ -16,7 +16,7 @@ abstract class Algorithm
     /** @var array<array-key,Node> */
     protected array $closeList = [];
 
-    /** @var array<array-key,Node> */
+    /** @var array<array-key,Position> */
     protected array $minPath = [];
 
     protected ?Node $currentNode = null;
@@ -44,10 +44,10 @@ abstract class Algorithm
         echo sprintf("Number of Tries: %d\n", count($this->closeList));
         echo sprintf("Minimum path found in %d Moves\n\n", count($this->minPath));
 
-        foreach ($this->minPath as $moveNumber => $node) {
+        foreach ($this->minPath as $moveNumber => $position) {
             echo sprintf(
                 "Move %d - Position : (x: %d, y: %d)\n",
-                $moveNumber + 1, $node->getPosition()->getX(), $node->getPosition()->getY()
+                $moveNumber + 1, $position->getX(), $position->getY()
             );
         }
     }
@@ -168,14 +168,16 @@ abstract class Algorithm
 
     private function calculateMinPath(): void
     {
+        $minPath = [];
         $nodeToAdd = $this->currentNode;
-        $minPath[] = $nodeToAdd;
+        $minPath[] = $nodeToAdd->getPosition();
 
         while ($nodeToAdd->getParentNode()->hasParentNode()) {
             $nodeToAdd = $nodeToAdd->getParentNode();
-            $minPath[] = $nodeToAdd;
+            $minPath[] = $nodeToAdd->getPosition();
         }
 
+        /** @var array<array-key,Position> $minPath */
         $this->minPath = array_reverse($minPath);
     }
 }

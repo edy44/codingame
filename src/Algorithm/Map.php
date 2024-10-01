@@ -49,7 +49,7 @@ abstract class Map
     }
 
     /**
-     * @param array<array-key,Node> $path
+     * @param array<array-key,Position> $path
      */
     abstract public function print(array $path): void;
 

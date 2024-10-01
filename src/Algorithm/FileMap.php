@@ -87,9 +87,8 @@ abstract class FileMap extends Map
     final public function print(array $path): void
     {
         $content = self::$fileContent;
-        foreach ($path as $node) {
-            $currentPosition = $node->getPosition();
-            $indexCurrentPosition = (($this->getWidth() + 1) * $currentPosition->getX()) + $currentPosition->getY();
+        foreach ($path as $position) {
+            $indexCurrentPosition = (($this->getWidth() + 1) * $position->getX()) + $position->getY();
             $content[$indexCurrentPosition] = ".";
             echo "$content\n";
             sleep(1);
