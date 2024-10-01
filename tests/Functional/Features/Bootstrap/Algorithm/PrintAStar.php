@@ -11,8 +11,8 @@ $rootDir = __DIR__ . '/Maps/';
 try {
     $map = AStarFileMap::initFromFile(filePath: $rootDir . $argv[1]);
     $authorizedMoves = AuthorizedMoves::unidirectionalMoves();
-    $AStar = new AStarAlgorithm(map: $map, authorizedMoves: $authorizedMoves);
-    $AStar->execute();
+    $AStar = new AStarAlgorithm();
+    $AStar->execute(map: $map, authorizedMoves: $authorizedMoves);
     $AStar->print();
 } catch (Exception $exception) {
     echo $exception->getMessage();

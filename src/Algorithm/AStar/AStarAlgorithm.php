@@ -11,10 +11,8 @@ final class AStarAlgorithm extends Algorithm
     protected function initVariables(): void
     {
         $this->currentNode = AStarNode::init(position: $this->map->getStartPosition(), cost: AStarCost::init());
-        $this->executionTime = null;
         $this->openList[] = $this->currentNode;
         $this->closeList = [];
-        $this->minPath = [];
     }
 
     /**

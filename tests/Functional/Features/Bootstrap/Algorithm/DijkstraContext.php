@@ -6,6 +6,7 @@ use Behat\Behat\Context\Context;
 use CodinGame\Algorithm\AuthorizedMoves;
 use CodinGame\Algorithm\Dijkstra\DijkstraAlgorithm;
 use CodinGame\Algorithm\Dijkstra\DijkstraFileMap;
+use CodinGame\Algorithm\Map;
 use Exception;
 use PHPUnit\Framework\Assert;
 
@@ -14,8 +15,9 @@ use PHPUnit\Framework\Assert;
  */
 class DijkstraContext implements Context
 {
-    /** @var DijkstraAlgorithm  */
     private DijkstraAlgorithm $dijkstra;
+
+    private Map $map;
 
     /**
      * @Given A file path :filePath which contains the map
@@ -24,10 +26,8 @@ class DijkstraContext implements Context
     public function aFilePathWhichContainsTheMap(string $filePath): void
     {
         $rootDir = __DIR__ . '/Maps/';
-        $dijkstraMap = DijkstraFileMap::initFromFile(filePath: $rootDir . $filePath);
-
-        $authorizedMoves = AuthorizedMoves::unidirectionalMoves();
-        $this->dijkstra = new DijkstraAlgorithm(map: $dijkstraMap, authorizedMoves: $authorizedMoves);
+        $this->map = DijkstraFileMap::initFromFile(filePath: $rootDir . $filePath);
+        $this->dijkstra = new DijkstraAlgorithm();
     }
 
     /**
@@ -36,7 +36,7 @@ class DijkstraContext implements Context
      */
     public function iExecuteTheAStarAlgorithm(): void
     {
-        $this->dijkstra->execute();
+        $this->dijkstra->execute(map: $this->map, authorizedMoves: AuthorizedMoves::unidirectionalMoves());
     }
 
     /**

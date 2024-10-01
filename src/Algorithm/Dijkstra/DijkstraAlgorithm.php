@@ -13,10 +13,8 @@ final class DijkstraAlgorithm extends Algorithm
     protected function initVariables(): void
     {
         $this->currentNode = DijkstraNode::init(position: $this->map->getStartPosition(), cost: DijkstraCost::init());
-        $this->executionTime = null;
         $this->openList[] = $this->currentNode;
         $this->closeList = [];
-        $this->minPath = [];
     }
 
     protected function configureChildrenNodes(array $childrenNodes): void

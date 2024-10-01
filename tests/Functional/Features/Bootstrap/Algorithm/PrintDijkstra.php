@@ -11,8 +11,8 @@ $rootDir = __DIR__ . '/Maps/';
 try {
     $map = DijkstraFileMap::initFromFile(filePath: $rootDir . $argv[1]);
     $authorizedMoves = AuthorizedMoves::unidirectionalMoves();
-    $dijkstra = new DijkstraAlgorithm(map: $map, authorizedMoves: $authorizedMoves);
-    $dijkstra->execute();
+    $dijkstra = new DijkstraAlgorithm();
+    $dijkstra->execute(map: $map, authorizedMoves: $authorizedMoves);
     $dijkstra->print();
 } catch (Exception $exception) {
     echo $exception->getMessage();

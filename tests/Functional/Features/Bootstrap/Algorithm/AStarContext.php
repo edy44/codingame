@@ -6,6 +6,7 @@ use Behat\Behat\Context\Context;
 use CodinGame\Algorithm\AStar\AStarAlgorithm;
 use CodinGame\Algorithm\AStar\AStarFileMap;
 use CodinGame\Algorithm\AuthorizedMoves;
+use CodinGame\Algorithm\Map;
 use Exception;
 use PHPUnit\Framework\Assert;
 
@@ -14,8 +15,9 @@ use PHPUnit\Framework\Assert;
  */
 class AStarContext implements Context
 {
-    /** @var AStarAlgorithm */
     private AStarAlgorithm $AStar;
+
+    private Map $map;
 
     /**
      * @Given A file path :filePath which contains the map
@@ -24,10 +26,8 @@ class AStarContext implements Context
     public function aFilePathWhichContainsTheMap(string $filePath): void
     {
         $rootDir = __DIR__ . '/Maps/';
-        $aStarMap = AStarFileMap::initFromFile(filePath: $rootDir . $filePath);
-
-        $authorizedMoves = AuthorizedMoves::unidirectionalMoves();
-        $this->AStar = new AStarAlgorithm(map: $aStarMap, authorizedMoves: $authorizedMoves);
+        $this->map = AStarFileMap::initFromFile(filePath: $rootDir . $filePath);
+        $this->AStar = new AStarAlgorithm();
     }
 
     /**
@@ -36,7 +36,7 @@ class AStarContext implements Context
      */
     public function iExecuteTheAStarAlgorithm(): void
     {
-        $this->AStar->execute();
+        $this->AStar->execute(map: $this->map, authorizedMoves: AuthorizedMoves::unidirectionalMoves());
     }
 
     /**

@@ -16,53 +16,58 @@ abstract class Algorithm
     /** @var array<array-key,Node> */
     protected array $closeList = [];
 
-    /** @var array<array-key,Position> */
-    protected array $minPath = [];
-
     protected ?Node $currentNode = null;
 
-    protected ?float $executionTime = null;
+    protected Map $map;
 
-    /**
-     * @param array<array-key,Position> $authorizedMoves
-     */
-    public function __construct(
-        protected readonly Map   $map,
-        private readonly array $authorizedMoves,
-        private readonly int   $maxIterations = self::MAX_ITERATIONS,
-    )
-    {
-    }
+    /** @var array<array-key,Position> */
+    private array $minPath = [];
+
+    private ?float $executionTime = null;
+
+    /** @var array<array-key,Position> */
+    private array $authorizedMoves;
 
     final public function print(): void
     {
         $this->map->print(path: $this->minPath);
 
-        echo sprintf("Algorithm %s\n", static::class);
-        echo sprintf("Execution Time: %s\n", $this->executionTime);
-        echo sprintf("Number of Nodes: %d\n", count($this->map->getGrid()));
-        echo sprintf("Number of Tries: %d\n", count($this->closeList));
         echo sprintf("Minimum path found in %d Moves\n\n", count($this->minPath));
 
         foreach ($this->minPath as $moveNumber => $position) {
             echo sprintf(
-                "Move %d - Position : (x: %d, y: %d)\n",
+                "Move %d - Position (x: %d, y: %d)\n",
                 $moveNumber + 1, $position->getX(), $position->getY()
             );
         }
+
+        /** @var array<array-key,Node> $traversableNodes */
+        $traversableNodes = array_filter(
+            $this->map->getGrid(), static fn(Node $node) => $node->isTraversable()
+        );
+
+        echo sprintf("\n\nAlgorithm %s\n", static::class);
+        echo sprintf("Execution Time: %s\n", $this->executionTime);
+        echo sprintf("Number of Traversable Nodes: %d\n", count($traversableNodes));
+        echo sprintf("Number of Tries: %d\n", count($this->closeList));
     }
 
     /**
+     * @param array<array-key,Position> $authorizedMoves
      * @throws Exception
      */
-    final public function execute(): void
+    final public function execute(Map $map, array $authorizedMoves, int $maxIterations = self::MAX_ITERATIONS): void
     {
         $startTime = microtime(true);
+        $this->map = $map;
+        $this->authorizedMoves = $authorizedMoves;
+        $this->minPath = [];
+        $this->executionTime = null;
         $this->initVariables();
 
         $iterations = 0;
         while (
-            $iterations < $this->maxIterations &&
+            $iterations < $maxIterations &&
             count($this->openList) !== 0 &&
             !Position::arePositionsEquals($this->currentNode->getPosition(), $this->map->getEndPosition())
         ) {
