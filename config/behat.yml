@@ -3,48 +3,58 @@ default:
   autoload:
     '': '../codingame'
   suites:
-   # EASY
-   chuck_norris_feature:
+    #Algorithm
+    a_star:
+      paths: [ ./tests/Functional/Features/Algorithm/a_star.feature ]
+      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Algorithm\AStarContext ]
+
+    dijkstra:
+      paths: [ ./tests/Functional/Features/Algorithm/dijkstra.feature ]
+      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Algorithm\DijkstraContext ]
+
+    # EASY
+    chuck_norris_feature:
       paths: [ ./tests/Functional/Features/Easy/chuck_norris.feature ]
       contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Easy\ChuckNorrisContext ]
 
-   power_of_thor_feature:
-     paths: [ ./tests/Functional/Features/Easy/power_of_thor.feature ]
-     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Easy\PowerOfThorContext ]
+    power_of_thor_feature:
+      paths: [ ./tests/Functional/Features/Easy/power_of_thor.feature ]
+      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Easy\PowerOfThorContext ]
 
-   art_ascii_feature:
-     paths: [ ./tests/Functional/Features/Easy/art_ascii.feature ]
-     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Easy\ArtASCIIContext ]
+    art_ascii_feature:
+      paths: [ ./tests/Functional/Features/Easy/art_ascii.feature ]
+      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Easy\ArtASCIIContext ]
 
-   defibrillator_feature:
-     paths: [ ./tests/Functional/Features/Easy/defibrillator.feature ]
-     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Easy\DefibrillatorContext ]
+    defibrillator_feature:
+      paths: [ ./tests/Functional/Features/Easy/defibrillator.feature ]
+      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Easy\DefibrillatorContext ]
 
     # MEDIUM
-   war_feature:
-     paths: [ ./tests/Functional/Features/Medium/war.feature ]
-     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\WarContext ]
+    war_feature:
+      paths: [ ./tests/Functional/Features/Medium/war.feature ]
+      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\WarContext ]
 
-   phone_numbers_feature:
-     paths: [ ./tests/Functional/Features/Medium/phone_numbers.feature ]
-     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\PhoneNumbersContext ]
+    phone_numbers_feature:
+      paths: [ ./tests/Functional/Features/Medium/phone_numbers.feature ]
+      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\PhoneNumbersContext ]
 
-   scrabble_feature:
-     paths: [ ./tests/Functional/Features/Medium/scrabble.feature ]
-     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\ScrabbleContext ]
+    scrabble_feature:
+      paths: [ ./tests/Functional/Features/Medium/scrabble.feature ]
+      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\ScrabbleContext ]
 
-   conway_feature:
-     paths: [ ./tests/Functional/Features/Medium/conway.feature ]
-     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\ConwayContext ]
+    conway_feature:
+      paths: [ ./tests/Functional/Features/Medium/conway.feature ]
+      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\ConwayContext ]
 
-   there_is_no_spoon_feature:
-     paths: [ ./tests/Functional/Features/Medium/there_is_no_spoon.feature ]
-     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\ThereIsNoSpoonContext ]
+    there_is_no_spoon_feature:
+      paths: [ ./tests/Functional/Features/Medium/there_is_no_spoon.feature ]
+      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\ThereIsNoSpoonContext ]
 
-   gift_feature:
-     paths: [ ./tests/Functional/Features/Medium/gift.feature ]
-     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\GiftContext ]
+    gift_feature:
+      paths: [ ./tests/Functional/Features/Medium/gift.feature ]
+      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\GiftContext ]
 
-   stock_exchange_losses_feature:
-     paths: [ ./tests/Functional/Features/Medium/stock_exchange_losses.feature ]
-     contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\StockExchangeLossesContext ]
+    stock_exchange_losses_feature:
+      paths: [ ./tests/Functional/Features/Medium/stock_exchange_losses.feature ]
+      contexts: [ CodinGame\Tests\Functional\Features\Bootstrap\Medium\StockExchangeLossesContext ]
+
